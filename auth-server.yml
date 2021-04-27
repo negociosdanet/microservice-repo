@@ -1,2 +1,62 @@
 server:
   port: 8081
+
+logging:
+  level:
+    org.springframework: INFO
+    org.hibernate: INFO
+
+info:
+  component: profile-service
+  app:
+    description: '@project.description@'
+    encoding: '@project.build.sourceEncoding@'
+    java:
+      version: '@java.version@'
+    name: '@project.name@'
+    version: '@project.version@'
+
+---
+spring:
+  profiles: dev 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    discovery:
+      enabled: false
+
+--- 
+spring:
+  profiles: prod 
+  rabbitmq:
+    host: 172.158.49.100
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    discovery:
+      enabled: false
+
+---
+spring:
+  profiles: docker
+  rabbitmq:
+    host: 192.168.99.100
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    discovery:
+      enabled: false
