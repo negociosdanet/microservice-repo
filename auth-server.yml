@@ -16,6 +16,12 @@ info:
     name: '@project.name@'
     version: '@project.version@'
 
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: profile-service
+
 ---
 spring:
   profiles: dev 
@@ -35,16 +41,16 @@ spring:
 spring:
   profiles: prod 
   rabbitmq:
-    host: 172.158.49.100
+    host: ${RABBITMQ_HOST}
     port: 5672
     username: guest
     password: guest
   cloud:
     loadbalancer:
       ribbon:
-        enabled: false
+        enabled: true
     discovery:
-      enabled: false
+      enabled: true
 
 ---
 spring:
